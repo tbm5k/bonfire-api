@@ -1,6 +1,7 @@
 package com.bonfireadventures.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Country {
@@ -9,9 +10,13 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int countryId;
     private String countryName;
+
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn
     private Continent continent;
+
+    @OneToMany(mappedBy = "country")
+    private List<City> cityList;
 
     public int getCountryId() {
         return countryId;
@@ -35,5 +40,13 @@ public class Country {
 
     public void setContinent(Continent continent) {
         this.continent = continent;
+    }
+
+    public List<City> getCityList() {
+        return cityList;
+    }
+
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
     }
 }
