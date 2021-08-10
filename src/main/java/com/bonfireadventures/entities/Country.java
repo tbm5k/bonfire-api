@@ -49,4 +49,14 @@ public class Country {
     public void setCityList(List<City> cityList) {
         this.cityList = cityList;
     }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "countryId=" + countryId +
+                ", countryName='" + countryName + '\'' +
+                ", continent=" + continent +
+                ", cityList=" + cityList +
+                '}';
+    }
 }
