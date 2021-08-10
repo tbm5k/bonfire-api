@@ -5,6 +5,8 @@ import com.bonfireadventures.repositories.ContinentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContinentService {
 
@@ -17,5 +19,9 @@ public class ContinentService {
 
     public Continent getContinent(int id) {
         return continentRepo.findById(id).get();
+    }
+
+    public List<Continent> getAllContinents() {
+        return (List<Continent>) continentRepo.findAll();
     }
 }

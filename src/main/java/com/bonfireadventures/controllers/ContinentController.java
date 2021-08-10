@@ -5,6 +5,8 @@ import com.bonfireadventures.services.ContinentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ContinentController {
 
@@ -19,5 +21,10 @@ public class ContinentController {
     @RequestMapping(method = RequestMethod.GET, value = "/continent/{id}")
     public Continent getContinent(@PathVariable int id){
         return continentService.getContinent(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/continents")
+    public List<Continent> getAllContinents(){
+        return continentService.getAllContinents();
     }
 }
