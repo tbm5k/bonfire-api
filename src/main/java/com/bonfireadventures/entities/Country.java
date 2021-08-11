@@ -1,5 +1,7 @@
 package com.bonfireadventures.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class Country {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Continent continent;
 
     @OneToMany(mappedBy = "country")

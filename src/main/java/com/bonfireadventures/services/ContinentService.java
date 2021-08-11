@@ -24,4 +24,8 @@ public class ContinentService {
     public List<Continent> getAllContinents() {
         return (List<Continent>) continentRepo.findAll();
     }
+
+    public boolean exists(int continentId) {
+        return continentRepo.existsById(continentId);
+    }
 }
