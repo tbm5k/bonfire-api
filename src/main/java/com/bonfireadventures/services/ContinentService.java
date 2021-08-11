@@ -1,6 +1,7 @@
 package com.bonfireadventures.services;
 
 import com.bonfireadventures.entities.Continent;
+import com.bonfireadventures.entities.Country;
 import com.bonfireadventures.repositories.ContinentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,9 @@ public class ContinentService {
 
     public boolean exists(int continentId) {
         return continentRepo.existsById(continentId);
+    }
+
+    public List<Country> getAllCountries(int id) {
+        return getContinent(id).getCountryList();
     }
 }

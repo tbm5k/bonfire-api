@@ -1,6 +1,7 @@
 package com.bonfireadventures.controllers;
 
 import com.bonfireadventures.entities.Continent;
+import com.bonfireadventures.entities.Country;
 import com.bonfireadventures.services.ContinentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +27,10 @@ public class ContinentController {
     @RequestMapping(method = RequestMethod.GET, value = "/continents")
     public List<Continent> getAllContinents(){
         return continentService.getAllContinents();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/continent/{id}/countries")
+    public List<Country> getAllCountries(@PathVariable int id){
+        return continentService.getAllCountries(id);
     }
 }
