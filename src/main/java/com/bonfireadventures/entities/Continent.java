@@ -7,7 +7,7 @@ import java.util.List;
 public class Continent {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int continentId;
     private String continentName;
     @OneToMany(mappedBy = "continent")
