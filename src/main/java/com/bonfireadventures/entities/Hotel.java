@@ -3,6 +3,7 @@ package com.bonfireadventures.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Hotel {
@@ -11,12 +12,14 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelId;
     private String hotelName;
-    private String imageUrl;
 
     @ManyToOne
     @JoinColumn
     @JsonIgnore
     private City city;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Image> imageList;
 
     public int getHotelId() {
         return hotelId;
@@ -42,11 +45,11 @@ public class Hotel {
         this.city = city;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<Image> getImageList() {
+        return imageList;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
     }
 }
