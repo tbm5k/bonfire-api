@@ -1,10 +1,12 @@
 package com.bonfireadventures.services;
 
 import com.bonfireadventures.entities.City;
+import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.repositories.CityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
+
+import java.util.List;
 
 @Service
 public class CityService {
@@ -31,5 +33,16 @@ public class CityService {
         }else {
             return null;
         }
+    }
+
+    public boolean exists(int cityId) {
+        return cityRepo.existsById(cityId);
+    }
+
+    public List<Hotel> getHotels(int continentId, int countryId, int cityId) {
+        if(continentService.exists(continentId) && countryService.exists(countryId) && cityRepo.existsById(cityId)){
+            return cityRepo.findById(cityId).get().getHotelList();
+        }
+        return null;
     }
 }

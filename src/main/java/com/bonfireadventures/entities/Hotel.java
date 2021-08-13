@@ -1,5 +1,7 @@
 package com.bonfireadventures.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,9 +11,11 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelId;
     private String hotelName;
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private City city;
 
     public int getHotelId() {
@@ -36,5 +40,13 @@ public class Hotel {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
