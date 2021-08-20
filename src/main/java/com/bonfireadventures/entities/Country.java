@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class Country {
@@ -11,6 +12,7 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int countryId;
+    private String uuid;
     private String countryName;
 
     @ManyToOne
@@ -21,12 +23,24 @@ public class Country {
     @OneToMany(mappedBy = "country")
     private List<City> cityList;
 
+    public Country(){
+        this.uuid = String.valueOf(UUID.randomUUID());
+    }
+
     public int getCountryId() {
         return countryId;
     }
 
     public void setCountryId(int countryId) {
         this.countryId = countryId;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getCountryName() {

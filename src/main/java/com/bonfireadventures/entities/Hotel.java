@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class Hotel {
@@ -11,6 +12,7 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelId;
+    private String uuid;
     private String hotelName;
 
     @ManyToOne
@@ -21,12 +23,24 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     private List<Image> imageList;
 
+    public Hotel(){
+        this.uuid = String.valueOf(UUID.randomUUID());
+    }
+
     public int getHotelId() {
         return hotelId;
     }
 
     public void setHotelId(int hotelId) {
         this.hotelId = hotelId;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getHotelName() {

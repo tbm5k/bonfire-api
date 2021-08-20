@@ -3,6 +3,7 @@ package com.bonfireadventures.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Image {
@@ -10,6 +11,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int imageId;
+    private String uuid;
     private String imageUrl;
 
     @ManyToOne
@@ -17,12 +19,24 @@ public class Image {
     @JsonIgnore
     private Hotel hotel;
 
+    public Image(){
+        this.uuid = String.valueOf(UUID.randomUUID());
+    }
+
     public int getImageId() {
         return imageId;
     }
 
     public void setImageId(int imageId) {
         this.imageId = imageId;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getImageUrl() {
