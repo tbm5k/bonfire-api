@@ -1,6 +1,7 @@
 package com.bonfireadventures.services;
 
 import com.bonfireadventures.entities.City;
+import com.bonfireadventures.entities.Continent;
 import com.bonfireadventures.entities.Country;
 import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.exceptions.NotFoundException;
@@ -53,13 +54,16 @@ public class CityService {
     }
 
     public List<City> getCities(int continentId, int countryId) {
-        if(continentService.exists(continentId) && countryService.exists(countryId)){
-            Country country = countryService.getCountry(continentId, countryId);
-            //List<City> cities = cityRepo.findAllByCountry(countryId);
-            List<City> cities = country.getCityList();
-            return cities;
-        }else {
-            return null;
+        if(continentService.exists(continentId)){
+            Continent continent = continentService.getContinent(continentId);
+            for(Country country : continent.getCountryList()){
+                if(country.getCountryId() == countryId){
+                    List<City> cities = country.getCityList();
+                    return cities;
+                }
+            }
+            throw new NotFoundException("Country not found");
         }
+        throw new NotFoundException("Continent not found");
     }
 }
