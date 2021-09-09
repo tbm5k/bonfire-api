@@ -3,6 +3,7 @@ package com.bonfireadventures.services;
 import com.bonfireadventures.entities.City;
 import com.bonfireadventures.entities.Country;
 import com.bonfireadventures.entities.Hotel;
+import com.bonfireadventures.exceptions.NotFoundException;
 import com.bonfireadventures.repositories.CityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,10 +31,14 @@ public class CityService {
 
     public City getCity(int continentId, int countryId, int cityId) {
         if(continentService.exists(continentId) && countryService.exists(countryId) && cityRepo.existsById(cityId)){
-            return cityRepo.findById(cityId).get();
-        }else {
-            return null;
+            Country country = countryService.getCountry(continentId, countryId);
+            for(City city : country.getCityList()){
+                if(city.getCityId() == cityId){
+                    return city;
+                }
+            }
         }
+        throw new NotFoundException("City does not exist");
     }
 
     public boolean exists(int cityId) {
