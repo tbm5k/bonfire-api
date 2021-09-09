@@ -1,6 +1,7 @@
 package com.bonfireadventures.services;
 
 import com.bonfireadventures.entities.City;
+import com.bonfireadventures.entities.Country;
 import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.repositories.CityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CityService {
 
     public void addCity(int continentId, int countryId, City city) {
         if(continentService.exists(continentId) && countryService.exists(countryId)){
-            city.setCountry(countryService.getCountry(countryId));
+            city.setCountry(countryService.getCountry(countryId, countryId));
             cityRepo.save(city);
         }else{
             return;
@@ -44,5 +45,16 @@ public class CityService {
             return cityRepo.findById(cityId).get().getHotelList();
         }
         return null;
+    }
+
+    public List<City> getCities(int continentId, int countryId) {
+        if(continentService.exists(continentId) && countryService.exists(countryId)){
+            Country country = countryService.getCountry(continentId, countryId);
+            //List<City> cities = cityRepo.findAllByCountry(countryId);
+            List<City> cities = country.getCityList();
+            return cities;
+        }else {
+            return null;
+        }
     }
 }

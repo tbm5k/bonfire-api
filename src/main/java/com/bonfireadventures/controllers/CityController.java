@@ -29,4 +29,9 @@ public class CityController {
     public List<Hotel> getHotels(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId){
         return cityService.getHotels(continentId, countryId, cityId);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/continent/{continentId}/country/{countryId}/cities")
+    public List<City> getCities(@PathVariable int continentId, @PathVariable int countryId){
+        return cityService.getCities(continentId, countryId);
+    }
 }
