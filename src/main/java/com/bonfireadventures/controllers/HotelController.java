@@ -29,4 +29,9 @@ public class HotelController {
     public List<Image> imageList(@PathVariable int hotelId){
         return hotelService.getImages(hotelId);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotels")
+    public List<Hotel> getHotels(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId){
+        return hotelService.getHotels(continentId, countryId, cityId);
+    }
 }

@@ -1,7 +1,9 @@
 package com.bonfireadventures.services;
 
+import com.bonfireadventures.entities.City;
 import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.entities.Image;
+import com.bonfireadventures.exceptions.NotFoundException;
 import com.bonfireadventures.repositories.HotelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,4 +46,11 @@ public class HotelService {
         }
         return null;
     }
+
+    public List<Hotel> getHotels(int continentId, int countryId, int cityId) {
+        City city = cityService.getCity(continentId, countryId, cityId);
+        List<Hotel> hotels = city.getHotelList();
+        return hotels;
+    }
+
 }
