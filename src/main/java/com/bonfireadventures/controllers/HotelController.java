@@ -1,5 +1,6 @@
 package com.bonfireadventures.controllers;
 
+import com.bonfireadventures.services.Imagemanipulator;
 import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.entities.Image;
 import com.bonfireadventures.services.HotelService;
@@ -14,6 +15,8 @@ public class HotelController {
 
     @Autowired
     private HotelService hotelService;
+    @Autowired
+    Imagemanipulator compressor;
 
     @RequestMapping(method = RequestMethod.POST, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotel")
     public void addHotel(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId, @RequestBody Hotel hotel){
