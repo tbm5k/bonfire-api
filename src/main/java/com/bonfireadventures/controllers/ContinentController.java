@@ -25,7 +25,7 @@ public class ContinentController {
         return continentService.getContinent(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/continents")
+    @RequestMapping(method = RequestMethod.GET, value = "/continent")
     public List<Continent> getAllContinents(){
         return continentService.getAllContinents();
     }
