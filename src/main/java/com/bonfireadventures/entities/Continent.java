@@ -19,6 +19,11 @@ public class Continent {
         this.uuid = String.valueOf(UUID.randomUUID());
     }
 
+    public Continent(String continentName) {
+        this.uuid = String.valueOf(UUID.randomUUID());
+        this.continentName = continentName;
+    }
+
     public int getContinentId() {
         return continentId;
     }
