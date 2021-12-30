@@ -23,6 +23,12 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<Hotel> hotelList;
 
+    public City(String cityName, Country country) {
+        this.uuid = String.valueOf(UUID.randomUUID());
+        this.cityName = cityName;
+        this.country = country;
+    }
+
     public City(){
         this.uuid = String.valueOf(UUID.randomUUID());
     }

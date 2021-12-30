@@ -58,4 +58,8 @@ public class CityService {
         }
         throw new NotFoundException("Continent not found");
     }
+
+    public void addCity(City mombasa) {
+        cityRepo.save(mombasa);
+    }
 }

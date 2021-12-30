@@ -1,9 +1,13 @@
 package com.bonfireadventures;
 
+import com.bonfireadventures.entities.City;
 import com.bonfireadventures.entities.Continent;
 import com.bonfireadventures.entities.Country;
+import com.bonfireadventures.entities.Hotel;
+import com.bonfireadventures.services.CityService;
 import com.bonfireadventures.services.ContinentService;
 import com.bonfireadventures.services.CountryService;
+import com.bonfireadventures.services.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +19,10 @@ public class BonfireAdventuresApplication implements CommandLineRunner {
 	private ContinentService continentService;
 	@Autowired
 	private CountryService countryService;
+	@Autowired
+	private CityService cityService;
+	@Autowired
+	private HotelService hotelService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BonfireAdventuresApplication.class, args);
@@ -43,5 +51,17 @@ public class BonfireAdventuresApplication implements CommandLineRunner {
 
 		countryService.addCountry(kenya);
 		countryService.addCountry(tanzania);
+
+		City mombasa = new City("Mombasa", kenya);
+		City nairobi = new City("Nairobi", kenya);
+
+		cityService.addCity(mombasa);
+		cityService.addCity(nairobi);
+
+		Hotel oleSereni = new Hotel("Ole Sereni", nairobi);
+		Hotel whitesands = new Hotel("Whitesands", mombasa);
+
+		hotelService.addHotel(whitesands);
+		hotelService.addHotel(oleSereni);
 	}
 }

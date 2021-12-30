@@ -23,6 +23,12 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     private List<Image> imageList;
 
+    public Hotel(String hotelName, City city) {
+        this.uuid = String.valueOf(UUID.randomUUID());
+        this.hotelName = hotelName;
+        this.city = city;
+    }
+
     public Hotel(){
         this.uuid = String.valueOf(UUID.randomUUID());
     }

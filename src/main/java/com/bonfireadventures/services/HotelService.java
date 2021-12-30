@@ -53,4 +53,7 @@ public class HotelService {
         return hotels;
     }
 
+    public void addHotel(Hotel hotel) {
+        hotelRepo.save(hotel);
+    }
 }
