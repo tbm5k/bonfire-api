@@ -3,7 +3,6 @@ package com.bonfireadventures.services;
 import com.bonfireadventures.entities.City;
 import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.entities.Image;
-import com.bonfireadventures.exceptions.NotFoundException;
 import com.bonfireadventures.repositories.HotelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +54,11 @@ public class HotelService {
 
     public void addHotel(Hotel hotel) {
         hotelRepo.save(hotel);
+    }
+
+    public Hotel makeOffer(int continentId, int countryId, int cityId, int hotelId) {
+        Hotel updated = getHotel(continentId, countryId, cityId, hotelId);
+        updated.setOffer(true);
+        return hotelRepo.save(updated);
     }
 }

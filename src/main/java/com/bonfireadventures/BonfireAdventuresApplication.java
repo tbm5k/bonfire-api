@@ -59,9 +59,39 @@ public class BonfireAdventuresApplication implements CommandLineRunner {
 		cityService.addCity(nairobi);
 
 		Hotel oleSereni = new Hotel("Ole Sereni", nairobi);
+		Hotel panari = new Hotel("Panari", nairobi);
+		Hotel harvest = new Hotel("Harvest", nairobi);
+		Hotel kilimanjaro = new Hotel("Kilimanjaro", nairobi);
+		Hotel a = new Hotel("A", nairobi);
+		Hotel b = new Hotel("B", nairobi);
+		Hotel c = new Hotel("C", nairobi);
+		Hotel d = new Hotel("D", nairobi);
+
 		Hotel whitesands = new Hotel("Whitesands", mombasa);
+		Hotel reef = new Hotel("Reef", mombasa);
+		Hotel msaBeech = new Hotel("Mombasa Beech", mombasa);
+		Hotel voyager = new Hotel("Voyager", mombasa);
+		Hotel e = new Hotel("E", mombasa);
+		Hotel f = new Hotel("F", mombasa);
+		Hotel g = new Hotel("G", mombasa);
+		Hotel h = new Hotel("H", mombasa);
 
 		hotelService.addHotel(whitesands);
+		hotelService.addHotel(reef);
+		hotelService.addHotel(msaBeech);
+		hotelService.addHotel(voyager);
+		hotelService.addHotel(e);
+		hotelService.addHotel(f);
+		hotelService.addHotel(g);
+		hotelService.addHotel(h);
+
 		hotelService.addHotel(oleSereni);
+		hotelService.addHotel(panari);
+		hotelService.addHotel(harvest);
+		hotelService.addHotel(kilimanjaro);
+		hotelService.addHotel(a);
+		hotelService.addHotel(b);
+		hotelService.addHotel(c);
+		hotelService.addHotel(d);
 	}
 }

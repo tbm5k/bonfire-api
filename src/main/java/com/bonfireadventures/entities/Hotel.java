@@ -14,6 +14,11 @@ public class Hotel {
     private int hotelId;
     private String uuid;
     private String hotelName;
+    private boolean offer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private PricePackage pricePackage;
 
     @ManyToOne
     @JoinColumn
@@ -31,6 +36,7 @@ public class Hotel {
 
     public Hotel(){
         this.uuid = String.valueOf(UUID.randomUUID());
+        this.offer = false;
     }
 
     public int getHotelId() {
@@ -71,5 +77,21 @@ public class Hotel {
 
     public void setImageList(List<Image> imageList) {
         this.imageList = imageList;
+    }
+
+    public boolean isOffer() {
+        return offer;
+    }
+
+    public void setOffer(boolean offer) {
+        this.offer = offer;
+    }
+
+    public PricePackage getPricePackage() {
+        return pricePackage;
+    }
+
+    public void setPricePackage(PricePackage pricePackage) {
+        this.pricePackage = pricePackage;
     }
 }
