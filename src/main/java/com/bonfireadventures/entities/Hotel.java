@@ -1,6 +1,7 @@
 package com.bonfireadventures.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,9 +17,9 @@ public class Hotel {
     private String hotelName;
     private boolean offer;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private PricePackage pricePackage;
+    @OneToMany(mappedBy = "hot", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<PricePackage> pricePackageList;
 
     @ManyToOne
     @JoinColumn
@@ -87,11 +88,11 @@ public class Hotel {
         this.offer = offer;
     }
 
-    public PricePackage getPricePackage() {
-        return pricePackage;
+    public List<PricePackage> getPricePackageList() {
+        return pricePackageList;
     }
 
-    public void setPricePackage(PricePackage pricePackage) {
-        this.pricePackage = pricePackage;
+    public void setPricePackageList(List<PricePackage> pricePackageList) {
+        this.pricePackageList = pricePackageList;
     }
 }

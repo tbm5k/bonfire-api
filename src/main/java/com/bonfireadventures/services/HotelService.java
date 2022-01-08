@@ -21,11 +21,12 @@ public class HotelService {
     @Autowired
     private CityService cityService;
 
-    public void addHotel(int continentId, int countryId, int cityId, Hotel hotel) {
+    public Hotel addHotel(int continentId, int countryId, int cityId, Hotel hotel) {
         if(continentService.exists(continentId) && countryService.exists(countryId) && cityService.exists(cityId)){
             hotel.setCity(cityService.getCity(continentId, countryId, cityId));
-            hotelRepo.save(hotel);
+            return hotelRepo.save(hotel);
         }
+        return null;
     }
 
     public Hotel getHotel(int continentId, int countryId, int cityId, int hotelId) {

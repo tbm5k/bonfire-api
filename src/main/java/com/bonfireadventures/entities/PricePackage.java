@@ -1,6 +1,7 @@
 package com.bonfireadventures.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,9 +21,10 @@ public class PricePackage {
     private int fiveDayFlying;
     private Date validity;
 
-    @OneToOne(mappedBy = "pricePackage")
+    @ManyToOne
+    @JoinColumn
     @JsonBackReference
-    private Hotel hotel;
+    private Hotel hot;
 
     public PricePackage() {
         this.uuid = String.valueOf(UUID.randomUUID());
@@ -93,10 +95,10 @@ public class PricePackage {
     }
 
     public Hotel getHotel() {
-        return hotel;
+        return hot;
     }
 
     public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+        this.hot = hotel;
     }
 }
