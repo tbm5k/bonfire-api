@@ -1,11 +1,9 @@
 package com.bonfireadventures.controllers;
 
-import com.bonfireadventures.entities.PricePackage;
 import com.bonfireadventures.services.Imagemanipulator;
 import com.bonfireadventures.entities.Hotel;
 import com.bonfireadventures.entities.Image;
 import com.bonfireadventures.services.HotelService;
-import com.bonfireadventures.services.PricePackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +18,6 @@ public class HotelController {
     @Autowired
     private HotelService hotelService;
     @Autowired
-    private PricePackageService pricePackageService;
-    @Autowired
     Imagemanipulator compressor;
 
     @RequestMapping(method = RequestMethod.POST, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotel")
@@ -33,8 +29,11 @@ public class HotelController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotel/{hotelId}")
-    public Hotel getHotel(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId, @PathVariable int hotelId){
-        return hotelService.getHotel(continentId, countryId, cityId, hotelId);
+    public ResponseEntity<Hotel> getHotel(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId, @PathVariable int hotelId){
+        Hotel response = hotelService.getHotel(continentId, countryId, cityId, hotelId);
+        if(response != null)
+            return ResponseEntity.ok().body(response);
+        return ResponseEntity.notFound().build();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotel/{hotelId}/images")

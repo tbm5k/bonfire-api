@@ -1,10 +1,6 @@
 package com.bonfireadventures.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -15,16 +11,14 @@ public class PricePackage {
     private int pricePackageId;
     private String uuid;
     private String mealPlan;
-    private int threeDaySGR;
-    private int fiveDaySGR;
+    private int threeDaySgr;
+    private int fiveDaySgr;
     private int threeDayFlying;
     private int fiveDayFlying;
-    private Date validity;
 
     @ManyToOne
     @JoinColumn
-    @JsonBackReference
-    private Hotel hot;
+    private Hotel hotelPackage;
 
     public PricePackage() {
         this.uuid = String.valueOf(UUID.randomUUID());
@@ -54,20 +48,20 @@ public class PricePackage {
         this.mealPlan = mealPlan;
     }
 
-    public int getThreeDaySGR() {
-        return threeDaySGR;
+    public int getThreeDaySgr() {
+        return threeDaySgr;
     }
 
-    public void setThreeDaySGR(int threeDaySGR) {
-        this.threeDaySGR = threeDaySGR;
+    public void setThreeDaySgr(int threeDaySgr) {
+        this.threeDaySgr = threeDaySgr;
     }
 
-    public int getFiveDaySGR() {
-        return fiveDaySGR;
+    public int getFiveDaySgr() {
+        return fiveDaySgr;
     }
 
-    public void setFiveDaySGR(int fiveDaySGR) {
-        this.fiveDaySGR = fiveDaySGR;
+    public void setFiveDaySgr(int fiveDaySgr) {
+        this.fiveDaySgr = fiveDaySgr;
     }
 
     public int getThreeDayFlying() {
@@ -86,19 +80,11 @@ public class PricePackage {
         this.fiveDayFlying = fiveDayFlying;
     }
 
-    public Date getValidity() {
-        return validity;
+    public Hotel getHotelPackage() {
+        return hotelPackage;
     }
 
-    public void setValidity(Date validity) {
-        this.validity = validity;
-    }
-
-    public Hotel getHotel() {
-        return hot;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hot = hotel;
+    public void setHotelPackage(Hotel hotelPackage) {
+        this.hotelPackage = hotelPackage;
     }
 }

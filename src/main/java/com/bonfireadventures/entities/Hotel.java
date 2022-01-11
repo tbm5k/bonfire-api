@@ -1,7 +1,6 @@
 package com.bonfireadventures.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,14 +16,13 @@ public class Hotel {
     private String hotelName;
     private boolean offer;
 
-    @OneToMany(mappedBy = "hot", fetch = FetchType.EAGER)
-    @JsonManagedReference
-    private List<PricePackage> pricePackageList;
-
     @ManyToOne
     @JoinColumn
     @JsonIgnore
     private City city;
+
+    @OneToMany(mappedBy = "hotelPackage")
+    private List<PricePackage> pricePackageList;
 
     @OneToMany(mappedBy = "hotel")
     private List<Image> imageList;
