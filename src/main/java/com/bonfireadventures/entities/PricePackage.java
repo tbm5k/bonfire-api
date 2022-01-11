@@ -1,5 +1,7 @@
 package com.bonfireadventures.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -18,6 +20,7 @@ public class PricePackage {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Hotel hotelPackage;
 
     public PricePackage() {
