@@ -34,3 +34,6 @@ build/
 
 ### property file
 src/main/resources/application.properties
+
+###gcp service key
+src/main/resources/bonfire-adventures-339612-1d713623ba3c.json
