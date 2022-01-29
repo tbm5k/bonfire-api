@@ -4,18 +4,15 @@ import com.bonfireadventures.entities.Image;
 import com.bonfireadventures.repositories.ImageRepo;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.storage.Bucket;
-import com.google.cloud.storage.BucketInfo;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
+import com.google.cloud.storage.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ImageService {
@@ -24,8 +21,6 @@ public class ImageService {
     private ImageRepo imageRepo;
     @Autowired
     private HotelService hotelService;
-    @Value("${GOOGLE_APPLICATION_CREDENTIALS}")
-    private String GOOGLE_APPLICATION_CREDENTIALS;
 
     public void addImage(int hotelId, Image image) {
         if(hotelService.exists(hotelId)){
@@ -40,18 +35,21 @@ public class ImageService {
         return null;
     }
 
-    @Bean
-    public void cloudStorage() throws IOException {
+    public String cloudStorage(MultipartFile fileName) throws IOException {
 
         Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("src/main/resources/bonfire-adventures-339612-1d713623ba3c.json"));
 
         //instantiate the client
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
 
-        //create bucket
-        Bucket bucket = storage.create(BucketInfo.of("bonfire-adventures-safari-bucket"));
+        //storing an image into the bucket
+        BlobInfo blob = storage.create(BlobInfo.newBuilder("bonfire-adventure-bucket", fileName.getOriginalFilename())
+                .setContentType(fileName.getContentType())
+                .setAcl(new ArrayList<>(List.of(Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER))))
+                .build(),
+                fileName.getInputStream());
 
-        System.out.println(bucket.getName());
-
+        //return the url to the file
+        return "https://storage.googleapis.com/bonfire-adventure-bucket/" + fileName.getOriginalFilename() ;
     }
 }
