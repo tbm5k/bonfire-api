@@ -31,18 +31,19 @@ public class HotelService {
     public Hotel addHotel(int continentId, int countryId, int cityId, Hotel hotel, List<MultipartFile> files) {
         if(continentService.exists(continentId) && countryService.exists(countryId) && cityService.exists(cityId)){
             List<Image> imagesUrl = new ArrayList<>();
+            hotel.setCity(cityService.getCity(continentId, countryId, cityId));
+            Hotel savedHotel = hotelRepo.save(hotel);
             try {
                 for(MultipartFile file: files){
                     Image image = new Image(imageService.cloudStorage(file));
-                    imagesUrl.add(image);
+                    imagesUrl.add(imageService.addImage(savedHotel, image));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             hotel.setImageList(imagesUrl);
-            hotel.setCity(cityService.getCity(continentId, countryId, cityId));
             //TODO check on the relationship between the image class and the hotel class, to resolve the bug whereby the images dont get saved as the hotel entity is being saved to the database
-            return hotelRepo.save(hotel);
+            return hotelRepo.save(savedHotel);
         }
         return null;
     }
