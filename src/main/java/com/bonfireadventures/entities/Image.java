@@ -23,6 +23,11 @@ public class Image {
         this.uuid = String.valueOf(UUID.randomUUID());
     }
 
+    public Image(String imageUrl) {
+        this.uuid = String.valueOf(UUID.randomUUID());
+        this.imageUrl = imageUrl;
+    }
+
     public int getImageId() {
         return imageId;
     }

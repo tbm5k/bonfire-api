@@ -6,8 +6,10 @@ import com.bonfireadventures.entities.Image;
 import com.bonfireadventures.services.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,9 +22,10 @@ public class HotelController {
     @Autowired
     Imagemanipulator compressor;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotel")
-    public ResponseEntity<Hotel> addHotel(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId, @RequestBody Hotel hotel){
-        Hotel savedHotel = hotelService.addHotel(continentId, countryId, cityId, hotel);
+    @RequestMapping(method = RequestMethod.POST, value = "/continent/{continentId}/country/{countryId}/city/{cityId}/hotel", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<Hotel> addHotel(@PathVariable int continentId, @PathVariable int countryId, @PathVariable int cityId, @RequestPart("hotel") String hotel, @RequestPart("file")List<MultipartFile> files){
+        Hotel jsonData = hotelService.getJson(hotel);
+        Hotel savedHotel = hotelService.addHotel(continentId, countryId, cityId, jsonData, files);
         if(savedHotel == null)
             return ResponseEntity.noContent().build();
         return ResponseEntity.status(HttpStatus.OK).body(savedHotel);
