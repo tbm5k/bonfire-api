@@ -42,7 +42,6 @@ public class HotelService {
                 e.printStackTrace();
             }
             hotel.setImageList(imagesUrl);
-            //TODO check on the relationship between the image class and the hotel class, to resolve the bug whereby the images dont get saved as the hotel entity is being saved to the database
             return hotelRepo.save(savedHotel);
         }
         return null;
