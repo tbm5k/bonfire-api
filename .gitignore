@@ -1,7 +1,7 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
+#!**/src/main/**/target/
 !**/src/test/**/target/
 
 ### STS ###
@@ -36,4 +36,4 @@ build/
 src/main/resources/application.properties
 
 ###gcp service key
-src/main/resources/bonfire-adventures-339612-1d713623ba3c.json
+src/main/resources/*.json
