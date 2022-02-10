@@ -1,15 +1,16 @@
-FROM openjdk:15
+#build stage
+FROM maven:3.8.4-jdk-11-slim AS build
 
 WORKDIR /app
 
-#RUN mvn -N io.takari:maven:wrapper
-COPY mvnw .
-COPY mvnw.cmd .
-COPY pom.xml .
-COPY src .
+COPY src /app/src
+COPY pom.xml /app/
 
-RUN ./mvnw package
+RUN mvn -f /app/pom.xml clean package
 
-COPY . .
+#package stage
+FROM openjdk:15
 
-CMD ["java", "-jar", "target/*.jar"]
+COPY --from=build /app/target/*.jar backend.jar
+
+CMD ["java", "-jar", "backend.jar"]
