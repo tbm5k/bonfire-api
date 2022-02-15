@@ -33,7 +33,10 @@ build/
 .vscode/
 
 ### property file
-src/main/resources/application.properties
+#src/main/resources/application.properties
+
+#jar file
+src/main/target/
 
 ###gcp service key
 src/main/resources/*.json
