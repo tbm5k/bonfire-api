@@ -6,7 +6,7 @@ WORKDIR /app
 COPY src /app/src
 COPY pom.xml /app/
 
-RUN mvn -f /app/pom.xml clean package
+RUN mvn -f /app/pom.xml clean -DskipTests package
 
 #package stage
 FROM openjdk:15

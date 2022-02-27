@@ -39,4 +39,4 @@ build/
 src/main/target/
 
 ###gcp service key
-src/main/resources/*.json
+# src/main/resources/*.json

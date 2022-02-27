@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bonfire-adventures-339612",
+  "private_key_id": "a7d61064e4269338728e4ee2e8d6283660b3e0ce",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCVrAfzjZmaq5dg\nG9iqPgNT14Ai98tH3UtG+2wE2r6LxR1N0dH+uevNW21n/VwWWosOS2giBjF266Ex\nBs1eYaoMeeVUsZ88MyJkztGdcHjE0O7gJKl4Gr/qnrBuqp0kFek+l/BFNwiAhtXK\nWA87hwmDd9gHNCbh5/mhPD7aZ/zqrDmNaCbYy9a65OHYlPh1/krZEAD0P/rC161c\nXqeVaD1pqetA5oRyBRdzQsiFurkgZisrYgPNXEvGpdfVGvac4SUpvHLFI3FY4puH\nuMk5nGSlfiNT/4dLQ+pZpak/MCkb17ZKlM7mM50AScRBToAKo8aRV41TfUGSgBJx\narC6t0gXAgMBAAECggEAJdebIw84OQ0NdvVTcKfBO5+O/Ehek0r2T3oeM5QC/V/X\nKufUCm2DmyZ0oQhEEjrOUczrBT8/nmuxE64+mpBi6EihnSpTsmrTVV2dTgsz3b9d\nxjo+xuksgOuifDiTBp6rnHHaBAYIFkcBIunk4A4ib6ULb7bV5eQ7D3MmCR6lqceC\nmP9X7s7pA1hsbsuGhYW26W8/l8+SSeT91UNPinqwEypXUzjkXIUsijYzbsCaROBD\nU9PFRhqEkoYkNClzmX9f1EW6krujks5Ic1UvgVog15EO5xJALp+dAm7xxhUMDOCH\nM3DmeMMI9eXTbnTQeeo2jkg9ijMK2bcy0d0ldVPKgQKBgQDPLyh+R2H6tB5ZY/9Z\n9xE2uTB3EQR4MmHcwUPCqsxIaanCb7AvV9SddB3DlZ9pK2I7so9vqWlnRnp1a6d/\nx6CSVbPxaXWfVEruZu1eYTXyqDtoEIJG8ErTgSeGf1f8MCnm9z46lPWfQNRTieDV\nemwk3wS0tTYX7W0x3AfvyTlHYQKBgQC47+Co77xc9waPQ+s4c03o+LDFsTBKxMC4\nAZSAR+valVxqu2TfgkvGa38oZT686nCLBGiD+2mI/fL7a464kmb19VlyvFQVlnBi\nS8/amXbRoIieRzXS7YAQDBBwuSBqcS9+H3T0Y2M6osWqPxpg42sSUQpj57dnPwNL\nucExMV9adwKBgGAI8fIm0GnPF8pDqddfyKDfEnH+d13nrKkRBIG1fd+K6t9vufEX\n+zvI2QsRzcSIEY6uZAJUOsFeT+Eht5BpTirGgxRB1/20qs768sguszz5ch/4lwqe\n03Bai6GyYWxKPwIKVNP+vCPHfyQB4y/RAVPN9HZ3EM3ihhz4as1hLqXBAoGAKITu\nLTVxiNDa0BLqe5DP1iZ+3KGo2gjnzKkT91NKuraU7BGo1Uu//HZbAufD6jJXfC34\nFErGYax6S1nSiGATTPp3oarfpWczsmW34cZUATPyGvOxOEivEVUDWR9Gmeu4oyKT\nRmRsPlGhi16OEgJh2D6HT0JarbVhrHrDeFq/8JsCgYEArRJpEScwUkotZoggqFVi\nW0ZEdD23IhHmCV2NTuZYgdMkkHR73wzSJJeRez5ZcdJj0Db7gaUIREPxG/Pq+HA1\n7gEBgafSieqhlnjcqhZLm5Y6OODX/9fq8TUKWbhKZS58On3QtFe+cPSPh3r8PC0B\nOwAdelGEDEG2jdfl26z8VQk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "wsl-61@bonfire-adventures-339612.iam.gserviceaccount.com",
+  "client_id": "111788162073101144408",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wsl-61%40bonfire-adventures-339612.iam.gserviceaccount.com"
+}
