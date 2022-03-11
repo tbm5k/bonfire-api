@@ -21,7 +21,7 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-public class Security {
+public class SecurityController {
 
     @GetMapping("/refresh/token")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
