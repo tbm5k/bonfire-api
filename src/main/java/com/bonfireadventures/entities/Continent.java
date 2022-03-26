@@ -12,7 +12,7 @@ public class Continent {
     private int continentId;
     private String uuid;
     private String continentName;
-    @OneToMany(mappedBy = "continent")
+    @OneToMany(mappedBy = "continent", cascade = CascadeType.REMOVE)
     private List<Country> countryList;
 
     public Continent(){

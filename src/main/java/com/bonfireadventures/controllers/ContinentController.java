@@ -4,6 +4,7 @@ import com.bonfireadventures.entities.Continent;
 import com.bonfireadventures.entities.Country;
 import com.bonfireadventures.services.ContinentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,5 +34,11 @@ public class ContinentController {
     @RequestMapping(method = RequestMethod.GET, value = "/continent/{id}/countries")
     public List<Country> getAllCountries(@PathVariable int id){
         return continentService.getAllCountries(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/continent/{id}")
+    public ResponseEntity<String> deleteContinent(@PathVariable int id){
+        continentService.deleteContinent(id);
+        return ResponseEntity.ok().body("Deleted");
     }
 }

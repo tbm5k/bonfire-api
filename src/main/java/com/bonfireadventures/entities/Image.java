@@ -14,7 +14,7 @@ public class Image {
     private String uuid;
     private String imageUrl;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     @JsonIgnore
     private Hotel hotel;

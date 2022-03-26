@@ -16,15 +16,15 @@ public class Hotel {
     private String hotelName;
     private boolean offer;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     @JsonIgnore
     private City city;
 
-    @OneToMany(mappedBy = "hotelPackage")
+    @OneToMany(mappedBy = "hotelPackage", cascade = CascadeType.REMOVE)
     private List<PricePackage> pricePackageList;
 
-    @OneToMany(mappedBy = "hotel")
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.REMOVE)
     private List<Image> imageList;
 
     public Hotel(String hotelName, City city) {

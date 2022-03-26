@@ -15,12 +15,12 @@ public class Country {
     private String uuid;
     private String countryName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     @JsonIgnore
     private Continent continent;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = CascadeType.REMOVE)
     private List<City> cityList;
 
     public Country(){

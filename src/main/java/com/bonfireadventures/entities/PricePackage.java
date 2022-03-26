@@ -18,7 +18,7 @@ public class PricePackage {
     private int threeDayFlying;
     private int fiveDayFlying;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     @JsonIgnore
     private Hotel hotelPackage;

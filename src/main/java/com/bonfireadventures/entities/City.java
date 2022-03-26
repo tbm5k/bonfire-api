@@ -1,6 +1,8 @@
 package com.bonfireadventures.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +17,13 @@ public class City {
     private String uuid;
     private String cityName;
 
-    @ManyToOne
+    @OnDelete( action = OnDeleteAction.CASCADE)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn
     @JsonIgnore
     private Country country;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", cascade = CascadeType.REMOVE)
     private List<Hotel> hotelList;
 
     public City(String cityName, Country country) {
